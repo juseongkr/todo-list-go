@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/juseongkr/todo-list-go/server"
 	"github.com/joho/godotenv"
+	"github.com/juseongkr/todo-list-go/server"
 	"log"
+	"os"
 )
 
 func main() {

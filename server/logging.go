@@ -17,7 +17,7 @@ func (s *statusCapturingResponseWriter) WriteHeader(statusCode int) {
 
 func loggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		statusCapturingWriter := &statusCapturingWriter{
+		statusCapturingWriter := &statusCapturingResponseWriter{
 			ResponseWriter: w,
 			status:         http.StatusOK,
 		}
@@ -27,5 +27,4 @@ func loggingMiddleware(next http.Handler) http.Handler {
 		log.Printf("[%s] %s - %d\n", r.Method, r.RequestURI,
 			statusCapturingWriter.status)
 	})
-
 }

@@ -11,7 +11,7 @@ import (
 )
 
 func must(err error) {
-	if err == db.ErrorNotFound {
+	if err == db.ErrNotFound {
 		log.Println("not found:", err)
 		panic(notFoundError)
 	} else if err != nil {

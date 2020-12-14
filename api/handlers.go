@@ -36,7 +36,7 @@ func modifyTodoList(w http.ResponseWriter, r *http.Request) {
 
 func deleteTodoList(w http.ResponseWriter, r *http.Request) {
 	listID := parseIntParam(r, "list_id")
-	must(db.DeleteTodoList(listId))
+	must(db.DeleteTodoList(listID))
 }
 
 func createTodoItem(w http.ResponseWriter, r *http.Request) {

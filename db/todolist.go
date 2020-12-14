@@ -1,7 +1,7 @@
 package db
 
 import (
-	"github.com/juseongkr/todo-list-go/db"
+	"github.com/juseongkr/todo-list-go/todo"
 )
 
 func GetTodoLists() ([]todo.List, error) {
@@ -61,7 +61,7 @@ func GetTodoList(todoListId int) (todo.ListWithItems, error) {
 			list.Items = append(list.Items, todo.Item{
 				ID:   *itemID,
 				Text: *itemText,
-				Done * itemDone,
+				Done: *itemDone,
 			})
 		}
 	}
@@ -147,7 +147,7 @@ func ModifyTodoItem(listID, itemID int, text string, done bool) error {
 	return nil
 }
 
-func DeleteTodoItem(listID, itemID, int) error {
+func DeleteTodoItem(listID, itemID int) error {
 	res, err := db.Exec(`
 		DELETE FROM todo_item
 		WHERE id = $1 AND todo_list_id = $2
